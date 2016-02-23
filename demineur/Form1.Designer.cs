@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(demineur));
             this.label1 = new System.Windows.Forms.Label();
             this.Tb_nbr_mine = new System.Windows.Forms.TextBox();
             this.btn_fire = new System.Windows.Forms.Button();
@@ -150,8 +151,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.table1);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "demineur";
-            this.Text = "Arshess";
+            this.Text = "Démineur";
             this.Load += new System.EventHandler(this.Arshess_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
