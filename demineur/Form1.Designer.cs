@@ -73,7 +73,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btn_fire);
             this.panel1.Controls.Add(this.Tb_nbr_mine);
-            this.panel1.Location = new System.Drawing.Point(368, 28);
+            this.panel1.Location = new System.Drawing.Point(369, 28);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(116, 90);
             this.panel1.TabIndex = 6;
@@ -106,24 +106,25 @@
             this.table1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.table1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.table1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.table1.Size = new System.Drawing.Size(334, 284);
+            this.table1.Size = new System.Drawing.Size(334, 334);
             this.table1.TabIndex = 8;
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(356, 12);
+            this.label2.Location = new System.Drawing.Point(357, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 13);
+            this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Bien joué, tu retentes ? ";
             this.label2.Visible = false;
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(365, 140);
+            this.label3.Location = new System.Drawing.Point(372, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 13);
             this.label3.TabIndex = 10;
@@ -132,8 +133,9 @@
             // 
             // lb_nb_bombe
             // 
+            this.lb_nb_bombe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lb_nb_bombe.AutoSize = true;
-            this.lb_nb_bombe.Location = new System.Drawing.Point(462, 140);
+            this.lb_nb_bombe.Location = new System.Drawing.Point(463, 140);
             this.lb_nb_bombe.Name = "lb_nb_bombe";
             this.lb_nb_bombe.Size = new System.Drawing.Size(19, 13);
             this.lb_nb_bombe.TabIndex = 11;
@@ -145,7 +147,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(500, 311);
+            this.ClientSize = new System.Drawing.Size(501, 360);
             this.Controls.Add(this.lb_nb_bombe);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);

@@ -11,7 +11,6 @@ using System.Windows.Forms;
 
 namespace demineur
 {
-
     public partial class demineur : Form
     {
         int nbr_mine = 0, x = 0, y = 0, bomba = 0, desamorce = 0, antminerestante = 0;
@@ -36,34 +35,30 @@ namespace demineur
         }
         private void cleangrille()
         {
-            Button b;
             for (int x = 0; x < 10; x++)
                 for (int y = 0; y < 10; y++)
                 {
-                    b = table1.GetControlFromPosition(x, y) as Button;
+                    Button b = table1.GetControlFromPosition(x, y) as Button;
                     b.Text = "";
                 }
         }
-        private void perdu(object sender)
+        private void perdu()
         {
-            Button bt = sender as Button;
-            MessageBox.Show("et hop, une jambe de moins", "Perdu");
+            MessageBox.Show("Et hop, une jambe de moins", "Perdu");
             table1.Enabled = false;
             btn_fire.Enabled = true;
+            label2.Text = "Bien joué, tu retentes ?";
             label2.Visible = true;
-            bt.Text = "X";
             loose = true;
-
             //---------------------------------------------------
-            //on affiche un X sur chaque bombe de la map
+            //on affiche un X sur chaque bombe sur la map
             //---------------------------------------------------
-            Button b;
             for (int x = 0; x < 10; x++)
                 for (int y = 0; y < 10; y++)
                 {
                     if (carte[x, y] == "X")
                     {
-                        b = table1.GetControlFromPosition(x, y) as Button;
+                        Button b = table1.GetControlFromPosition(x, y) as Button;
                         b.Text = "X";
                     }
                 }
@@ -73,8 +68,7 @@ namespace demineur
             gengrille();
             table1.Enabled = false;
         }
-
-        private void verif_cases(object sender, int xx, int yy, Button bt)
+        private void verif_cases(int xx, int yy)
         {
             // les verticales ou l'inverse j'ai un doute
             if (xx < 9)
@@ -119,25 +113,33 @@ namespace demineur
                 if (carte[xx - 1, yy + 1] == "X")
                     bomba++;
             }
+            Button bt = table1.GetControlFromPosition(xx, yy) as Button;
             bt.Text = bomba.ToString();
+            //if (bomba == 0)
+            //{
+            //    verif_cases(xx + 1, yy);
+            //    verif_cases(xx - 1, yy);
+            //    verif_cases(xx, yy + 1);
+            //    verif_cases(xx, yy - 1);
+            //}
             bomba = 0;
+
         }
         private void Bt_Click(object sender, MouseEventArgs e)
         {
             Button bt = sender as Button;
-            string[] test = bt.Name.Split('-');
-            int xx = Convert.ToInt32(test[1]);
-            int yy = Convert.ToInt32(test[2]);
+            string[] bt_pos = bt.Name.Split('-');
+            int xx = Convert.ToInt32(bt_pos[1]);
+            int yy = Convert.ToInt32(bt_pos[2]);
             if (e.Button == MouseButtons.Left)
             {
-                //Console.WriteLine("{0} {1}", test[1], test[2]);
                 if (carte[xx, yy] == "X")
                 {
-                    perdu(sender);
+                    perdu();
                 }
                 else
                 {
-                    verif_cases(sender, xx, yy, bt);
+                    verif_cases(xx, yy);
                 }
             }
             else if (e.Button == MouseButtons.Right)
@@ -160,7 +162,6 @@ namespace demineur
                         bt.Text = "M";
                         antminerestante--;
                     }
-
                     if (desamorce == nbr_mine)
                     {
                         label2.Text = "You are Winner ";
@@ -185,10 +186,8 @@ namespace demineur
                 } while (carte[x, y] == "X");
 
                 carte[x, y] = "X";
-                //Console.WriteLine("x = {0} y = {1}",x,y);
             }
         }
-
         private void btn_fire_Click(object sender, EventArgs e)
         {
             if (Regex.IsMatch(Tb_nbr_mine.Text, "^[0-9]{1,2}$"))
