@@ -11,9 +11,10 @@ using System.Windows.Forms;
 
 namespace demineur
 {
+
     public partial class demineur : Form
     {
-        int nbr_mine = 0, x = 0, y = 0, bomba = 0, desamorce=0, antminerestante=0;
+        int nbr_mine = 0, x = 0, y = 0, bomba = 0, desamorce = 0, antminerestante = 0;
         // matrice de 9 sur 9
         string[,] carte = new string[10, 10];
         bool loose = false;
@@ -33,7 +34,16 @@ namespace demineur
                 }
             table1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
         }
-
+        private void cleangrille()
+        {
+            Button b;
+            for (int x = 0; x < 10; x++)
+                for (int y = 0; y < 10; y++)
+                {
+                    b = table1.GetControlFromPosition(x, y) as Button;
+                    b.Text = "";
+                }
+        }
         private void perdu(object sender)
         {
             Button bt = sender as Button;
@@ -56,8 +66,7 @@ namespace demineur
                         b = table1.GetControlFromPosition(x, y) as Button;
                         b.Text = "X";
                     }
-                }           
-            
+                }
         }
         private void Arshess_Load(object sender, EventArgs e)
         {
@@ -65,7 +74,7 @@ namespace demineur
             table1.Enabled = false;
         }
 
-        private void verif_cases(object sender, int xx, int yy,Button bt)
+        private void verif_cases(object sender, int xx, int yy, Button bt)
         {
             // les verticales ou l'inverse j'ai un doute
             if (xx < 9)
@@ -79,7 +88,6 @@ namespace demineur
                     bomba++;
             }
             // les horizontales  ou l'inverse j'ai un doute
-
             if (yy < 9)
             {
                 if (carte[xx, yy + 1] == "X")
@@ -112,9 +120,7 @@ namespace demineur
                     bomba++;
             }
             bt.Text = bomba.ToString();
-           
             bomba = 0;
-
         }
         private void Bt_Click(object sender, MouseEventArgs e)
         {
@@ -126,12 +132,12 @@ namespace demineur
             {
                 //Console.WriteLine("{0} {1}", test[1], test[2]);
                 if (carte[xx, yy] == "X")
-                { 
+                {
                     perdu(sender);
                 }
                 else
                 {
-                    verif_cases(sender,xx,yy,bt);
+                    verif_cases(sender, xx, yy, bt);
                 }
             }
             else if (e.Button == MouseButtons.Right)
@@ -194,8 +200,7 @@ namespace demineur
                 table1.Enabled = true;
                 if (loose)
                 {
-                    table1.Controls.Clear();
-                    gengrille();
+                    cleangrille();
                 }
                 antminerestante = nbr_mine;
                 lb_nb_bombe.Visible = true;
@@ -204,6 +209,5 @@ namespace demineur
                 label2.Visible = false;
             }
         }
-
-    }    
+    }
 }
